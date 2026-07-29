@@ -27,8 +27,8 @@ El objetivo central es simular la postura de seguridad defensiva (*Blue Team*) d
       +---------------------+---------------------+---------------------+
       |                     |                     |                     |
       v                     v                     v                     v
-  [ VLAN 10 ]           [ VLAN 20 ]           [ VLAN 30 ]           [ VLAN 40 ]
-   Management            Services            Security (SIEM)       IoT / Isolation
+    [ VLAN 10 ]           [ VLAN 20 ]           [ VLAN 30 ]           [ VLAN 40 ]
+     Management            Services            Security (SIEM)       IoT / Isolation
 
 - Proxmox VE
 - Nginx Proxy Mgr
@@ -71,6 +71,6 @@ El objetivo central es simular la postura de seguridad defensiva (*Blue Team*) d
 
 ## 👤 Autor
 
-* **Contacto:** [Eddie Navarrete / [Enlace a tu LinkedIn](https://www.linkedin.com/in/eddie-navarrete-389b4a232/)
+* **Contacto:** [Eddie Navarrete / [Linkedin Eddie Navarrete](https://www.linkedin.com/in/eddie-navarrete-389b4a232/)
 * **Objetivo Profesional:** AWS Cloud Security Engineer / Junior Cloud Security Analyst.
 
