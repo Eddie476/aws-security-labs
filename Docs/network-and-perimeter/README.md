@@ -11,8 +11,8 @@ Para limitar el radio de impacto (*blast radius*) en caso de un compromiso de re
 | ID VLAN | Nombre | Subred | Propósito / Alcance |
 | :--- | :--- | :--- | :--- |
 | **VLAN 10** | Management | `10.10.0.0/24` | Interfaces de administración (Proxmox, pfSense GUI, Switches). |
-| **VLAN 20** | Services | `10.20.0.0/24` | Servicios internos y Nginx Reverse Proxy. |
-| **VLAN 30** | Security | `10.30.0.0/24` | Infraestructura de monitoreo (Wazuh SIEM Manager). |
+| **VLAN 20** | Services | `10.20.0.0/24` | Servicios internos e Infraestructura de monitoreo (Wazuh SIEM Manager). |
+| **VLAN 30** | DMZ | `10.30.0.0/24` | Nginx Reverse Proxy. |
 | **VLAN 40** | IoT / Isolation | `10.40.0.0/24` | Dispositivos inteligentes (Home Assistant) sin acceso a otras VLANs. |
 | **VLAN 50** | Clients | `10.50.0.0/24` | Dispositivos de computo de los usuarios dentro de la empresa. |
 | **VLAN 90** | Guess | `10.90.0.0/24` | Dispositivos externos de los usuarios dentro de la empresa. |
