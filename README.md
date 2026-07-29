@@ -24,14 +24,14 @@ El objetivo central es simular la postura de seguridad defensiva (*Blue Team*) d
                                        v
               [ INTERNET ] <---> [ WAN (pfSense) ] <---------------+
                                        |
-      +---------------------+---------------------+---------------------+
-      |                     |                     |                     |
-      v                     v                     v                     v
-    [ VLAN 10 ]           [ VLAN 20 ]           [ VLAN 30 ]           [ VLAN 40 ]
-     Management            Services            Security (SIEM)       IoT / Isolation
+      +---------------------+---------------------+---------------------+---------------------+---------------------+
+      |                     |                     |                     |                     |                     |
+      v                     v                     v                     v                     v                     v
+    [ VLAN 10 ]         [ VLAN 20 ]          [ VLAN 30 ]           [ VLAN 40 ]           [ VLAN 50 ]           [ VLAN 90 ]
+     Management          Services           Security (SIEM)       IoT / Isolation          Clients                Guess
 
-    - Proxmox VE        - AdGuard Home        - Nginx Proxy Mgr      - Home Assistant
-    - PfSense           - Wazuh Manager       
+    - Proxmox VE       - AdGuard Home      - Nginx Proxy Mgr     - Home Assistant      - Users Clients     - External devices
+    - PfSense          - Wazuh Manager       
 
 ---
 
