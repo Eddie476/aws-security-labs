@@ -30,13 +30,8 @@ El objetivo central es simular la postura de seguridad defensiva (*Blue Team*) d
     [ VLAN 10 ]           [ VLAN 20 ]           [ VLAN 30 ]           [ VLAN 40 ]
      Management            Services            Security (SIEM)       IoT / Isolation
 
-- Proxmox VE
-- Nginx Proxy Mgr
-- Wazuh Manager
-- Home Assistant
-- AdGuard Home
-- Internal Apps
-- Log Collectors
+    - Proxmox VE        - AdGuard Home        - Nginx Proxy Mgr      - Home Assistant
+    - PfSense           - Wazuh Manager       
 
 ---
 
