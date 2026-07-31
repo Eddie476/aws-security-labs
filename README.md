@@ -31,7 +31,9 @@ El objetivo central es simular la postura de seguridad defensiva (*Blue Team*) d
      Management          Services           Security (SIEM)       IoT / Isolation          Clients                Guess
 
     - Proxmox VE       - AdGuard Home      - Nginx Proxy Mgr     - Home Assistant      - Users Clients     - External devices
-    - PfSense          - Wazuh Manager       
+    - PfSense          - Wazuh Manager
+    - Tailscale
+    - Homelable
 
 ---
 
