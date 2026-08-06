@@ -56,7 +56,18 @@ Se aplica una política estricta de Denegación por Defecto (Default Deny) a niv
 
 ## 📸 Evidencias y Diagramas
 
-*(Añade aquí tus capturas de pantalla de la interfaz de pfSense, tablas de reglas o diagramas de Draw.io)*
+### 1. Segmentación de Red y Reglas de Firewall (pfSense)
+*Configuración de VLANs e implementación de Aliases RFC1918 para la denegación por defecto entre subredes:*
 
-* `docs/network-and-perimeter/images/pfsense-vlan-rules.png`
-* `docs/network-and-perimeter/images/adguard-dashboard.png`
+![VLAN Rules pfSense](./images/pfsense-lan-rules.png)
+![Aliases pfSense](./images/pfsense-aliases.png)
+
+### 2. Filtrado DNS Perimetral (AdGuard Home)
+*Dashboard operativo procesando consultas DNS e interceptando dominios no deseados:*
+
+![AdGuard Dashboard](./images/adguard-dashboard.png)
+
+### 3. Publicación Segura en DMZ (Nginx Proxy Manager)
+*Regla de reenvío proxy desde la DMZ hacia la VLAN 40 (IoT):*
+
+![Nginx Proxy Manager](./images/nginx-proxy-rules.png)
