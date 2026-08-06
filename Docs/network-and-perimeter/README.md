@@ -13,19 +13,27 @@ Para limitar el radio de impacto (*blast radius*) en caso de un compromiso de re
 | **VLAN 10** | Management | `10.10.0.0/24` | Interfaces de administración (Proxmox, pfSense GUI, Switches). |
 | **VLAN 20** | Services | `10.20.0.0/24` | Servicios internos e Infraestructura de monitoreo (Wazuh SIEM Manager). |
 | **VLAN 30** | DMZ | `10.30.0.0/24` | Nginx Reverse Proxy. |
-| **VLAN 40** | IoT / Isolation | `10.40.0.0/24` | Dispositivos inteligentes (Home Assistant) sin acceso a otras VLANs. |
-| **VLAN 50** | Clients | `10.50.0.0/24` | Dispositivos de computo de los usuarios dentro de la empresa. |
-| **VLAN 90** | Guess | `10.90.0.0/24` | Dispositivos externos de los usuarios dentro de la empresa. |
+| **VLAN 40** | IoT | `10.40.0.0/24` | Dispositivos inteligentes (Home Assistant) sin acceso a otras VLANs. |
+| **VLAN 50** | LAN | `10.50.0.0/24` | Dispositivos de computo de los usuarios dentro de la empresa. |
+| **VLAN 90** | Guess | `10.90.0.0/24` | Red para invitados aislada de toda la infraestructura interna. |
 
 ---
 
 ## 2. Firewall & Políticas de Tráfico (pfSense)
 
-Se aplica una estrategia de **Denegación por Defecto (*Default Deny*)**. Las reglas principales de filtrado son:
+Se aplica una política estricta de Denegación por Defecto (Default Deny) a nivel perimetral e inter-VLAN.
 
-1. **Bloqueo Inter-VLAN:** Ninguna subred de menor confianza (ej. VLAN 40) puede iniciar conexiones hacia la subred de administración (VLAN 10) ni de seguridad (VLAN 30).
-2. **Acceso al SIEM:** Solo los agentes autorizados en la VLAN 20 y VLAN 10 tienen permitido enviar logs por el puerto `1514/TCP` hacia la VLAN 30 (Wazuh).
-3. **Egresos a Internet:** Limitados a tráfico HTTP/HTTPS y consultas DNS dirigidas exclusivamente al resolvedor interno (AdGuard Home).
+  * Hardening de Interfaz WAN: Se eliminó la exposición del puerto 443/TCP en la WAN para evitar vectores de ataque externos sobre la GUI del firewall.
+
+  * Mecanismo de Administración: El acceso administrativo a pfSense y Proxmox está restringido a la subred LAN (10.50.0.100) y conexiones remotas vía Tailscale (10.10.0.2).
+
+  * Reglas Inter-VLAN Destacadas:
+
+       * Aislamiento de IoT y Guest: Las subredes VLAN 40 (IoT) y VLAN 90 (GUEST) tienen denegado todo acceso hacia las direcciones privadas RFC1918. Únicamente tienen permitido tráfico de salida hacia Internet y consultas DNS hacia AdGuard.
+
+       * Proxy Inverso: El proxy Nginx (10.30.0.2 en DMZ) únicamente tiene permitido comunicarse con la VLAN 40 para reenviar peticiones HTTPS hacia Home Assistant (10.40.0.2:8123).
+
+       * Ingreso de Telemetría al SIEM: Las subredes autorizadas tienen tráfico permitido exclusivamente hacia el puerto 1514/1515 (TCP) de la VLAN 20 para el envío de logs de los agentes Wazuh hacia 10.20.0.3.
 
 ---
 
